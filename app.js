@@ -14,7 +14,9 @@ mongoose.connection.once('open', () => {
 const displayRoute = require('./routes/display')
 const deleteRoute = require('./routes/delete')
 const editRoute = require('./routes/edit')
+const addRoute = require('./routes/add')
 
+app.use('/api', addRoute)
 app.use('/api', displayRoute)
 app.use('/api', deleteRoute)
 app.use('/api', editRoute)
