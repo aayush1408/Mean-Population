@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path')
 
 // Instances of the module
 const config = require('./config/index')
@@ -21,8 +22,14 @@ app.use('/api', displayRoute)
 app.use('/api', deleteRoute)
 app.use('/api', editRoute)
 
+app.use(express.static(path.join(__dirname, 'client')));
+app.get('*', function (req, res, next) {
+    res.sendFile(__dirname + '/client/index.html');
+});
+
 const csvFilePath = './assets/DelhiPopulationData.csv'
 const csv = require('csvtojson')
+
 csv()
     .fromFile(csvFilePath)
     .then((jsonObj) => {
@@ -38,8 +45,8 @@ csv()
                 console.log('Saved')
             })
         })
-
     })
+
 
 const port = process.env.port || 5000
 app.listen(port, () => {
