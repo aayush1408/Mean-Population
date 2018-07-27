@@ -4,10 +4,11 @@ const mongoose = require('mongoose')
 const Population = require('../models/delhiPopulation')
 
 router.post('/add', (req, res) => {
+    console.log(req.body)
     let newData = new Population(req.body)
-    newData.save((err) => {
+    newData.save((err, data) => {
         if (err) throw err;
-        res.send('Saved')
+        res.send(data)
     })
 })
 

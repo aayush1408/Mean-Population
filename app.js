@@ -1,11 +1,14 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
-
+const bodyParser = require('body-parser')
 // Instances of the module
 const config = require('./config/index')
 const app = express()
 const Population = require('./models/delhiPopulation')
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
 
 mongoose.connect(config.mongoURI)
 mongoose.connection.once('open', () => {

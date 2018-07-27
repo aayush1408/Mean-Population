@@ -4,7 +4,8 @@ const mongoose = require('mongoose')
 const Population = require('../models/delhiPopulation')
 
 router.put('/edit/:id', (req, res) => {
-    Population.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }).then((data) => {
+    Population.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { upsert: false }).then((data) => {
+        console.log(req.body)
         res.send(data)
     })
 })
