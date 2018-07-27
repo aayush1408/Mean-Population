@@ -2,19 +2,23 @@ const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
 const bodyParser = require('body-parser')
-// Instances of the module
+
+// Instance of the module
 const config = require('./config/index')
 const app = express()
 const Population = require('./models/delhiPopulation')
 
+// Setup body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// Connect to mongodb
 mongoose.connect(config.mongoURI)
 mongoose.connection.once('open', () => {
     console.log('Connected to db');
 })
 
+// Acquire the routes
 const displayRoute = require('./routes/display')
 const deleteRoute = require('./routes/delete')
 const editRoute = require('./routes/edit')

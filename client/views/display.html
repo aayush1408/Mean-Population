@@ -1,6 +1,9 @@
 <div>
-    <h1>Delhi Population</h1><br>
+    <h1>Delhi Population</h1>
+
     <button ng-click="addForm()" ng-hide="isAdd" class="btn btn-md btn-primary">Add</button>
+
+    <!-- Add form -->
     <div ng-show="isAdd">
         <form class="form-group" ng-submit="addData()">
             <input placeholder="Year.."  class="form-control" ng-model="addYear">
@@ -14,6 +17,8 @@
             <button type="submit" class="btn-sm btn-primary">Add</button>
         </form>
     </div>
+
+    <!-- Table to display the data -->
     <table class="table table-responsive">
         <thead>
             <tr>
@@ -36,6 +41,8 @@
             </tr>
         </tbody>
     </table>
+
+    <!-- Edit form -->
     <div ng-show="isEdit">
         <h4>Update</h4>
         <form class="form-group" ng-submit="updateData()">

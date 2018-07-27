@@ -1,7 +1,13 @@
 myApp.controller('displayController', ['$scope', '$http', function ($scope, $http) {
+
+    //store the complete data.
     $scope.population = []
+
+    // Control the display of the forms.
     $scope.isEdit = false
     $scope.isAdd = false
+
+    // Handles and displays the data.
     $scope.displayValues = function () {
         $http.get("http://localhost:5000/api/display").then(function (response) {
             console.log(response.data)
@@ -10,7 +16,11 @@ myApp.controller('displayController', ['$scope', '$http', function ($scope, $htt
             console.log(err)
         })
     }
+
+    // Print the display values
     $scope.displayValues()
+
+    // Removes the selected row
     $scope.removeData = function (id) {
         let _id = id
         $http({
@@ -18,12 +28,14 @@ myApp.controller('displayController', ['$scope', '$http', function ($scope, $htt
             url: 'http://localhost:5000/api/remove/' + _id,
         }).then(function (response) {
             console.log(response)
-            alert('Deleted')
+            swal({ text: 'Removed', icon: "success" });
             $scope.displayValues()
         }).catch(function (err) {
             console.log(err)
         })
     }
+
+    // Handles the display and value of the editform
     $scope.editData = function (pop) {
         $scope.isEdit = true
         $scope.editId = pop._id
@@ -33,8 +45,8 @@ myApp.controller('displayController', ['$scope', '$http', function ($scope, $htt
         $scope.editRate = pop.rate
     }
 
+    // Updates the data
     $scope.updateData = function () {
-        console.log($scope.editId)
         let newData = {
             _id: $scope.editId,
             year: $scope.editYear,
@@ -42,7 +54,6 @@ myApp.controller('displayController', ['$scope', '$http', function ($scope, $htt
             growth: $scope.editGrowth,
             rate: $scope.editRate
         }
-        console.log(newData)
         $http({
             method: 'PUT',
             url: 'http://localhost:5000/api/edit/' + $scope.editId,
@@ -50,16 +61,20 @@ myApp.controller('displayController', ['$scope', '$http', function ($scope, $htt
             data: newData
         }).then(function (response) {
             console.log(response)
-            alert('Updated')
+            swal({ text: 'Updated', icon: "success" });
+            $scope.isEdit = false
             $scope.displayValues()
         }).catch(function (err) {
             console.log(err)
         })
     }
+
+    // Handles the add form
     $scope.addForm = function () {
         $scope.isAdd = true
     }
 
+    // Add data
     $scope.addData = function () {
         let newData = {
             year: $scope.addYear,
@@ -74,7 +89,8 @@ myApp.controller('displayController', ['$scope', '$http', function ($scope, $htt
             data: newData
         }).then(function (response) {
             console.log(response)
-            alert('Added')
+            swal({ text: 'Added', icon: "success" });
+            $scope.isAdd = false
             $scope.displayValues()
         }).catch(function (err) {
             console.log(err)

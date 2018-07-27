@@ -3,6 +3,8 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const Population = require('../models/delhiPopulation')
 
+// Get the data from the database
+
 router.get('/display', (req, res) => {
     Population.find({}, (err, data) => {
         if (err) {
