@@ -1,4 +1,18 @@
 <div>
+    <button ng-click="addForm()">Add</button>
+    <div ng-show="isAdd">
+        <form ng-submit="addData()">
+            <input placeholder="Year.." ng-model="addYear">
+            <br>
+            <input placeholder="Population.." ng-model="addPopulation">
+            <br>
+            <input placeholder="Growth.." ng-model="addGrowth">
+            <br>
+            <input placeholder="Rate.." ng-model="addRate">
+            <br>
+            <button type="submit">Update</button>
+        </form>
+    </div>
     <table class="table table-responsive">
         <thead>
             <tr>
@@ -11,13 +25,27 @@
         </thead>
         <tbody>
             <tr ng-repeat="pop in population" :key="pop._id">
-                <td>{{pop.year}}</td>
+                <td >{{pop.year}}</td>
                 <td>{{pop.population}}</td>
                 <td>{{pop.growth}}</td>
                 <td>{{pop.rate}}</td>
                 <td><button class="btn-danger" ng-click="removeData(pop._id)">Remove</button></td>
-                <td><button class="btn-warning" ng-click="updateData(pop._id)">Update</button></td>                
+                <td><button class="btn-warning" ng-click="editData(pop)">Edit</button></td>                
             </tr>
         </tbody>
     </table>
+    <div ng-show="isEdit">
+        <form ng-submit="updateData()">
+            <input ng-show="false" ng-model="editId"/>
+            <input  placeholder="Year.." ng-model="editYear">
+            <br>
+            <input  placeholder="Population.." ng-model="editPopulation">
+            <br>
+            <input  placeholder="Growth.." ng-model="editGrowth">
+            <br>
+            <input  placeholder="Rate.." ng-model="editRate">
+            <br>            
+            <button type="submit">Update</button>
+        </form>
+    </div>
 </div>
