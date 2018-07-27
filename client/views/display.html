@@ -1,1 +1,20 @@
-<div>Display</div>
+<div>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th scope="col" width="150px">Year</th>
+                <th scope="col" width="200px">Population</th>
+                <th scope="col" width="200px">Growth</th>
+                <th scope="col" width="140px">Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pop in population" :key="pop._id">
+                <td>{{pop.year}}</td>
+                <td>{{pop.population}}</td>
+                <td>{{pop.growth}}</td>
+                <td>{{pop.rate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

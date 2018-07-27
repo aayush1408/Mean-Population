@@ -7,6 +7,7 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
         })
         .when('/display', {
             templateUrl: 'views/display.html',
+            controller: 'displayController'
         })
         .otherwise({ redirectTo: '/' })
 }]);
