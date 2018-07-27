@@ -3,9 +3,6 @@ myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $
     $locationProvider.hashPrefix('');
     $routeProvider.
         when('/', {
-            templateUrl: 'views/home.html',
-        })
-        .when('/display', {
             templateUrl: 'views/display.html',
             controller: 'displayController'
         })

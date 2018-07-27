@@ -1,16 +1,17 @@
 <div>
-    <button ng-click="addForm()">Add</button>
+    <h1>Delhi Population</h1><br>
+    <button ng-click="addForm()" ng-hide="isAdd" class="btn btn-md btn-primary">Add</button>
     <div ng-show="isAdd">
-        <form ng-submit="addData()">
-            <input placeholder="Year.." ng-model="addYear">
+        <form class="form-group" ng-submit="addData()">
+            <input placeholder="Year.."  class="form-control" ng-model="addYear">
             <br>
-            <input placeholder="Population.." ng-model="addPopulation">
+            <input placeholder="Population.." class="form-control" ng-model="addPopulation">
             <br>
-            <input placeholder="Growth.." ng-model="addGrowth">
+            <input placeholder="Growth.." class="form-control" ng-model="addGrowth">
             <br>
-            <input placeholder="Rate.." ng-model="addRate">
+            <input placeholder="Rate.." class="form-control" ng-model="addRate">
             <br>
-            <button type="submit">Update</button>
+            <button type="submit" class="btn-sm btn-primary">Add</button>
         </form>
     </div>
     <table class="table table-responsive">
@@ -20,7 +21,8 @@
                 <th scope="col" width="200px">Population</th>
                 <th scope="col" width="200px">Growth</th>
                 <th scope="col" width="140px">Rate</th>
-                <th scope="col" width="140px">Delete</th>                
+                <th scope="col" width="140px">Delete</th>  
+                <th scope="col" width="140px">Edit</th>                              
             </tr>
         </thead>
         <tbody>
@@ -29,23 +31,24 @@
                 <td>{{pop.population}}</td>
                 <td>{{pop.growth}}</td>
                 <td>{{pop.rate}}</td>
-                <td><button class="btn-danger" ng-click="removeData(pop._id)">Remove</button></td>
-                <td><button class="btn-warning" ng-click="editData(pop)">Edit</button></td>                
+                <td><button class="btn-danger btn-sm" ng-click="removeData(pop._id)">Remove</button></td>
+                <td><button class="btn-warning btn-sm" ng-click="editData(pop)">Edit</button></td>                
             </tr>
         </tbody>
     </table>
     <div ng-show="isEdit">
-        <form ng-submit="updateData()">
+        <h4>Update</h4>
+        <form class="form-group" ng-submit="updateData()">
             <input ng-show="false" ng-model="editId"/>
-            <input  placeholder="Year.." ng-model="editYear">
+            <input  placeholder="Year.." class="form-control" ng-model="editYear">
             <br>
-            <input  placeholder="Population.." ng-model="editPopulation">
+            <input  placeholder="Population.." class="form-control" ng-model="editPopulation">
             <br>
-            <input  placeholder="Growth.." ng-model="editGrowth">
+            <input  placeholder="Growth.." class="form-control" ng-model="editGrowth">
             <br>
-            <input  placeholder="Rate.." ng-model="editRate">
+            <input  placeholder="Rate.." class="form-control" ng-model="editRate">
             <br>            
-            <button type="submit">Update</button>
+            <button type="submit" class="btn-md btn-success">Update</button>
         </form>
     </div>
 </div>
