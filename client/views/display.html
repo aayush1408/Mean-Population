@@ -6,6 +6,7 @@
                 <th scope="col" width="200px">Population</th>
                 <th scope="col" width="200px">Growth</th>
                 <th scope="col" width="140px">Rate</th>
+                <th scope="col" width="140px">Delete</th>                
             </tr>
         </thead>
         <tbody>
@@ -14,6 +15,8 @@
                 <td>{{pop.population}}</td>
                 <td>{{pop.growth}}</td>
                 <td>{{pop.rate}}</td>
+                <td><button class="btn-danger" ng-click="removeData(pop._id)">Remove</button></td>
+                <td><button class="btn-warning" ng-click="updateData(pop._id)">Update</button></td>                
             </tr>
         </tbody>
     </table>

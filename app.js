@@ -27,27 +27,6 @@ app.get('*', function (req, res, next) {
     res.sendFile(__dirname + '/client/index.html');
 });
 
-const csvFilePath = './assets/DelhiPopulationData.csv'
-const csv = require('csvtojson')
-
-csv()
-    .fromFile(csvFilePath)
-    .then((jsonObj) => {
-        jsonObj.map((i) => {
-            let newData = new Population({
-                year: i.Year,
-                population: i.Population,
-                growth: i.Growth,
-                rate: i.Growth_Rate
-            })
-            newData.save((err) => {
-                if (err) throw err;
-                console.log('Saved')
-            })
-        })
-    })
-
-
 const port = process.env.port || 5000
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)

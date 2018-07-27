@@ -10,7 +10,7 @@ router.delete('/remove/:id', (req, res) => {
             res.send(`Something went worng ${res.statusCode}`)
         }
         else {
-            res.send(`Deleted data ${data}`)
+            res.json(`Deleted data ${data}`)
         }
     })
 })
