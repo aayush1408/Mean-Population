@@ -5,6 +5,7 @@
 * Clone repo and `cd` into it.
 * Run `npm i` to install dependencies.
 * Create a config folder and create an index.js file
+* Run ```node csvToJson.js``` and after completion kill the script
 * Run `npm start` to run development server(:heart: nodemon)
 
 ## Structure of config/index.js
